@@ -1,0 +1,77 @@
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "params": [
+      {
+        "name": "country_select",
+        "value": "Top 10 countries",
+        "bind": {
+          "input": "select",
+          "options": [
+            "Top 10 countries",
+            "United States of America",
+            "China",
+            "Japan",
+            "Germany",
+            "India",
+            "Russian Federation",
+            "Indonesia",
+            "Brazil",
+            "Nigeria",
+            "Mexico"
+          ],
+          "name": "Select Country: "
+        }
+      }
+    ],
+    "data": {"url": "data/G4.csv", "format": {"type": "csv"}},
+    "transform": [
+      {"filter": {"field": "Area", "oneOf": ["United States of America", "China", "Japan", "Germany", "India", "Russian Federation", "Indonesia", "Brazil", "Nigeria", "Mexico"]}},
+      {"filter": "datum['Area'] == country_select || country_select == 'Top 10 countries'"}
+    ],
+    "width": 750, "height": 500,
+    "layer": [
+      {
+        "mark": {
+          "type": "line",
+          "point": true,
+          "strokeWidth": 3
+        },
+        "encoding": {
+          "x": {"type": "temporal", "field": "Year"},
+          "y": {"type":"quantitative", "field": "Total Feed for Area"},
+          "color": {
+            "field": "Area", 
+            "type": "nominal", 
+            "title": "Country",
+            "scale": {
+              "domain": ["United States of America", "China", "Japan", "Germany", "India", "Russian Federation", "Indonesia", "Brazil", "Nigeria", "Mexico"],
+              "range": ["#E69F00", "#56B4E9", "#F0E442", "#D55E00", "#0072B2", "#999999", "#CC79A7", "#1F77B4", "#663399", "#FF7F0E"]
+            }
+          },
+          "tooltip": [
+            {"field": "Year", "type": "temporal", "title": "Year"},
+            {"field": "Total Feed for Area", "type": "quantitative", "title": "Total Feed Production (in 1000 tons)"},
+            {"field": "Area", "type": "nominal", "title": "Country"}
+        ]
+
+        }
+      },
+      
+      {
+       
+        
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dx": -8,
+          "fontSize": 18,
+          "fontWeight": "bold"
+        },
+        "encoding": {
+          "x": {"field": "Year", "type": "temporal"},
+          "y": {"field": "Total Feed for Area", "type": "quantitative"}
+        }
+      }
+    ]
+  }

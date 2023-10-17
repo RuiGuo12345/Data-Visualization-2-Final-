@@ -1,0 +1,89 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "data/total_food_feed_by_area_year.csv"},
+    "params": [
+        {
+            "name": "country_select",
+            "value": "All Countries",
+            "bind": {
+                "input": "select",
+                "options": ["United States of America", "China", "Japan", "Germany", "India", "Russian Federation", "Indonesia", "Brazil", "Nigeria", "Mexico", "All Countries"],
+                "name": "Select Country: "
+            }
+        }
+    ],
+    "vconcat": [
+        {
+            "width": 750,
+            "height": 340,
+            "mark": {
+                "type": "line",
+                "point": {
+                    "filled": true,
+                    "size": 100
+                },
+                "strokeWidth": 3
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "temporal",
+                    "scale": {"domain": {"param": "brush"}},
+                    "axis": {"title": "", "tickCount": 10}
+                },
+                "y": {
+                    "field": "Total Food for Area",
+                    "type": "quantitative",
+                    "title": "Total Food for Area(in 1000 tons)",
+                    "axis": {"format": "s"},
+                    "scale": {"zero": false}
+                },
+                "color": {
+                    "field": "Area",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": ["United States of America", "China", "Japan", "Germany", "India", "Russian Federation", "Indonesia", "Brazil", "Nigeria", "Mexico"],
+                        "range": ["#E69F00", "#56B4E9", "#D3D3D3", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#4B0082", "#FFA500"]
+                    }
+                },
+                "tooltip": [
+                    {"field": "Year", "type": "temporal", "title": "Year"},
+                    {"field": "Total Food for Area", "type": "quantitative", "title": "Total Food for Area(in 1000 tons)", "format": ".4s"}
+                ]
+            },
+            "transform": [
+                {"filter": "country_select == 'All Countries' || datum['Area'] == country_select"},
+                {"filter": {"param": "brush", "field": "Year"}}
+            ]
+        },
+        {
+            "width": 750,
+            "height": 80,
+            "mark": "line",
+            "params": [
+                {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+            ],
+            "encoding": {
+                "x": {"field": "Year", "type": "temporal", "axis": {"tickCount": 10}},
+                "y": {
+                    "field": "Total Food for Area",
+                    "type": "quantitative",
+                    "axis": {"tickCount": 3, "grid": false, "format": ".4s"}
+                },
+                "color": {
+                    "field": "Area",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": ["United States of America", "China", "Japan", "Germany", "India", "Russian Federation", "Indonesia", "Brazil", "Nigeria", "Mexico"],
+                        "range": ["#E69F00", "#56B4E9", "#D3D3D3", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#4B0082", "#FFA500"]
+                    }
+                },
+                "tooltip": [
+                    {"field": "Year", "type": "ordinal", "title": "Year"},
+                    {"field": "Total Food for Area", "type": "quantitative", "title": "Total Food for Area(in 1000 tons)", "format": ".4s"}
+                ]
+            },
+            "transform": [{"filter": "country_select == 'All Countries' || datum['Area'] == country_select"}]
+        }
+    ]
+}

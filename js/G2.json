@@ -1,0 +1,84 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 450,
+    "title": "Top food products (2000-2013)",
+    "data": {"url": "data/G3.csv"},
+
+
+
+    "params": [
+        {
+          "name": "Item_select",
+          "value": "All Items",
+          "bind": {
+            "input": "select",
+            "options": [
+              "All Items",
+              "Alcoholic Beverages",
+              "Beer",
+              "Cereals - Excluding Beer",
+              "Eggs",
+              "Fish, Seafood",
+              "Fruits - Excluding Wine",
+              "Fruits, Other",
+              "Maize and products",
+              "Meat",
+              "Milk - Excluding Butter",
+              "Potatoes and products",
+              "Rice (Milled Equivalent)",
+              "Starchy Roots",
+              "Sugar & Sweeteners",
+              "Sugar (Raw Equivalent)",
+              "Tomatoes and products",
+              "Vegetables",
+              "Vegetables, Other",
+              "Wheat and products"
+
+            ],
+            "name": "Item_select: "
+          }
+        }
+      ],
+      "transform": [
+        {"filter": {"field": "Item", "oneOf": [
+        "All Items",
+        "Alcoholic Beverages",
+        "Beer",
+        "Cereals - Excluding Beer",
+        "Eggs",
+        "Fish, Seafood",
+        "Fruits - Excluding Wine",
+        "Fruits, Other",
+        "Maize and products",
+        "Meat",
+        "Milk - Excluding Butter",
+        "Potatoes and products",
+        "Rice (Milled Equivalent)",
+        "Starchy Roots",
+        "Sugar & Sweeteners",
+        "Sugar (Raw Equivalent)",
+        "Tomatoes and products",
+        "Vegetables",
+        "Vegetables, Other",
+        "Wheat and products"]}},
+        {"filter": "datum['Item'] == Item_select || Item_select == 'All Items'"}
+      ],
+
+    "mark": "bar",
+    "encoding": {
+        "y":{"field":"Year", "title": "Year"},
+        "x":{"field":"Production", 
+              "type":"quantitative", "sort": "-x","title": "Food production (in 1000 tonnes)"},
+        "color": {
+            "field":"Item",
+            "scale": {"scheme": "Viridis"}
+          },
+        "tooltip": [
+            {"field": "Year", "type": "nominal", "title": "Year"},
+            {"field": "Item", "type": "nominal", "title": "Item"},
+            {"field": "Production", "type": "quantitative", "title": "Food production"}
+        ]
+
+    }
+}

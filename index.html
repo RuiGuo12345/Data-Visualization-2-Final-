@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+  
+  <script src="js/FIT3179_data_visulation2.js"></script>
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <title>FIT3179 Assignment 2</title>
+</head>
+
+<body>
+
+<div class="center">
+    <h1>  Food and Feed Production all over the world </h1>
+
+    
+    <hr>
+    <div id="section1">
+        <h2>World Food Production (1961-2013)</h2>
+        <div id="gragh1"></div>
+        <p id="sec1_text" class="text">
+            Food production is a critical and dynamic aspect of the global ecosystem, 
+            affecting not only our physical health, but also our economy, culture and environment. 
+            In a changing world, the world food production continues to evolve due to factors 
+            such as increasing population and people's growing demand for nutrition.
+
+            <br>
+            From 1961 to 2013, 
+            this dynamic visual map provides a concise overview of the changing patterns of global food production. 
+            By choosing different years, changes and trends in agricultural output over time can be observed.
+            The legend on the right displays food production using color saturation.
+    
+        </p>
+    </div>
+    
+    <hr>
+    <div id="section2">
+        <h2>Top countries Food Production</h2>
+        <div id="graph2"></div>
+        <p id="sec2_text" class="text">
+            The global population is projected to increase to 9.7 billion by the year 2050. 
+            Addressing the challenge of feeding this expanding population has emerged as a prominent issue for food and agricultural entities, 
+            as well as entrepreneurs and philanthropic organizations. Potential solutions encompass a broad spectrum, 
+            including transforming agricultural practices and revolutionizing dietary habits. 
+            This is also the main purpose of the visualization, to explore changes in the yield of food types
+            <br>
+            The visualization above employs a stacked bar chart to display the category rankings of various foods 
+            from 2000 to 2013. Users can select the food types they are interested in, 
+            or concerned about using the provided options. 
+            They can view specific data for a chosen category during a particular time period 
+            and subsequently analyze trends or forecast. Additionally, 
+            the legend is positioned on the right side to prevent the use of both red and green.
+    
+        </p>
+    </div>
+    
+    <div id="section3">
+        <h2>Food Production by Category</h2>
+        <div id="graph3"></div>
+        <p id="sec3_text" class="text">
+            Food production not only varies over time 
+            but also differs based on the type of food, 
+            and the rates of change also vary. 
+            This area chart displays the production of major food items 
+            in various countries around the world from 2000 to 2013.
+            <br>
+            
+            
+            I added the "point" interaction feature. By clicking on the different food categories listed in the legend on the right side, 
+            the corresponding area will be retained, 
+            while the opacity of the other areas will decrease.
+    
+        </p>
+    </div>
+    
+    <div id="section4">
+        <h2>Top 10 countries for Feed Production(1961-2013)</h2>
+        <div id="graph4"></div>
+        <p id="sec4_text" class="text">
+            Feed production is an important economic and agricultural indicator, 
+            which not only reflects the scale and efficiency of agricultural production, 
+            but also has a broad impact on the livestock industry, 
+            agricultural economy and markets.
+            <br>
+            This visualization shows a line chart of the top 10 countries 
+            in terms of feed production from 1961 to 2013. 
+            there is a button to select a specific country and observe trends in feed production
+        </p>
+    </div>
+
+    <div id="section5">
+        <h2>Food Production(1961-2013)</h2>
+        <div id="graph5"></div>
+        <p id="sec5_text" class="text">
+            Feed production serves as a significant economic and agricultural metric, 
+            encompassing the scale and efficiency of agricultural operations. Moreover, 
+            it exerts a substantial influence on the livestock sector, agricultural economy, 
+            and overall market dynamics.
+            <br>
+            This visualization shows a line chart of feed production from 1961 to 2013. 
+            there is a button to select a specific country and observe trends in feed production.
+            I added the "brush" interaction feature, which allows users to choose their own time interval
+        </p>
+    </div>
+
+
+</div>
+
+</body>
+
+
+</html>
